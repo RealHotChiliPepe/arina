@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f5c3d3">
+<title>Для Арины</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alice&family=Caveat:wght@500;700&family=Lobster&family=Oswald:wght@600&family=PT+Mono&family=Playfair+Display:ital,wght@0,900;1,700&family=Rubik+Mono+One&family=Russo+One&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #f5c3d3;
+    --lipstick: #d33c5c;
+    --paper: #fffdf8;
+    --cream: #f6eee2;
+    --ink: #221a1c;
+    --line: #b9cbe0;
+    --stitch: #e27ba0;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; overflow-x: hidden; overflow-x: clip; }
+  body {
+    min-height: 100vh;
+    color: var(--ink);
+    font-family: "Alice", Georgia, serif;
+    font-size: 19px;
+    line-height: 1.5;
+    padding: 26px 16px 60px;
+    overflow-x: hidden;
+    background-color: var(--pink);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='%23ea9dbb'%3E%3Ccircle cx='30' cy='22' r='9'/%3E%3Ccircle cx='30' cy='42' r='9'/%3E%3Ccircle cx='20' cy='32' r='9'/%3E%3Ccircle cx='40' cy='32' r='9'/%3E%3Ccircle cx='90' cy='82' r='9'/%3E%3Ccircle cx='90' cy='102' r='9'/%3E%3Ccircle cx='80' cy='92' r='9'/%3E%3Ccircle cx='100' cy='92' r='9'/%3E%3C/g%3E%3Cg fill='%23fbe3ec'%3E%3Ccircle cx='30' cy='32' r='5'/%3E%3Ccircle cx='90' cy='92' r='5'/%3E%3C/g%3E%3Cg fill='%23e27ba0'%3E%3Cpath d='M88 26c-2-3-6-1-5 2 1 2 5 5 5 5s4-3 5-5c1-3-3-5-5-2z'/%3E%3Cpath d='M28 88c-2-3-6-1-5 2 1 2 5 5 5 5s4-3 5-5c1-3-3-5-5-2z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  main { max-width: 480px; margin: 0 auto; position: relative; }
+
+  .hearts { display: flex; gap: 6px; justify-content: center; margin-bottom: 16px; }
+  .hearts svg { width: 20px; height: 20px; }
+
+  .strip {
+    display: table; margin: 0 auto 14px; padding: 3px 10px 4px;
+    background: var(--paper); font-family: "PT Mono", monospace; font-size: 13px;
+    letter-spacing: .06em; transform: rotate(-1.5deg);
+    box-shadow: 1px 2px 0 rgba(0,0,0,.12);
+  }
+
+  .ransom { text-align: center; margin: 0 0 22px; line-height: 1.25; font-weight: normal; }
+  .word { display: inline-block; white-space: nowrap; margin: 0 6px 8px; }
+  .word.long { white-space: normal; }
+  .rl {
+    display: inline-block; padding: 1px 5px 2px; margin: 0 1px;
+    box-shadow: 1px 2px 0 rgba(0,0,0,.18);
+  }
+
+  .card {
+    position: relative; margin: 0 0 22px; padding: 24px 20px 22px;
+    background: var(--paper);
+    box-shadow: 0 2px 0 rgba(0,0,0,.06), 0 10px 22px -12px rgba(120,30,60,.45);
+  }
+  .tape::before {
+    content: ""; position: absolute; top: -12px; left: 50%; width: 96px; height: 26px;
+    margin-left: -48px; transform: rotate(-3deg);
+    background: rgba(246,236,214,.8);
+    box-shadow: 0 1px 2px rgba(0,0,0,.08);
+  }
+  .torn {
+    clip-path: polygon(0 0, 100% 0, 100% 96%, 96% 99%, 91% 96%, 86% 100%, 80% 97%, 74% 100%, 68% 96%, 61% 99%, 55% 96%, 49% 100%, 43% 97%, 37% 100%, 31% 96%, 25% 99%, 19% 96%, 12% 100%, 6% 97%, 0 99%);
+    padding-bottom: 34px;
+  }
+  .tilt-l { transform: rotate(-1.2deg); }
+  .tilt-r { transform: rotate(1deg); }
+
+  .note {
+    font-family: "Caveat", cursive; font-weight: 500; font-size: 27px; line-height: 34px;
+    padding: 30px 18px 24px 46px;
+    background:
+      linear-gradient(90deg, transparent 32px, #f19aa8 32px, #f19aa8 34px, transparent 34px),
+      repeating-linear-gradient(var(--paper) 0 33px, var(--line) 33px 34px);
+    background-position: 0 0, 0 22px;
+  }
+  .note p { margin: 0; }
+
+  .dict {
+    width: 80%; margin: -6px 0 24px auto; padding: 10px 14px;
+    background: var(--cream); font-size: 14px; line-height: 1.4; transform: rotate(2deg);
+    box-shadow: 1px 2px 0 rgba(0,0,0,.1);
+  }
+  .dict b { font-family: "Playfair Display", serif; font-size: 22px; }
+  .dict i { color: #6d5d60; }
+
+  .label { margin: 0 0 12px; }
+  .riddle { font-size: 21px; margin: 0; }
+  .cipher { text-align: center; margin: 18px 0 4px; line-height: 1.5; }
+  .cipher .rl { min-width: 30px; text-align: center; }
+  .alphabet {
+    margin: 12px 0 0; text-align: center; font-family: "PT Mono", monospace;
+    font-size: 13px; letter-spacing: .2em; color: #7a6468; word-break: break-all;
+  }
+  .spot {
+    margin: 16px 0 0; padding-top: 12px; border-top: 2px dashed var(--stitch);
+    font-family: "Caveat", cursive; font-size: 24px; line-height: 1.2;
+  }
+
+  .polaroid {
+    background: #fff; padding: 10px 10px 4px; margin: 16px 0 4px;
+    box-shadow: 0 6px 16px -8px rgba(0,0,0,.45); transform: rotate(-1.5deg);
+  }
+  .polaroid .map { position: relative; height: 280px; overflow: hidden; background: #eadfd6; }
+  .map img { position: absolute; width: 256px; height: 256px; max-width: none; }
+  .map .ring { position: absolute; left: 0; top: 0; }
+  .map .osm { position: absolute; right: 0; bottom: 0; padding: 1px 5px; font: 10px system-ui, sans-serif; background: rgba(255,255,255,.8); }
+  .polaroid figcaption {
+    font-family: "Caveat", cursive; font-size: 24px; text-align: center; padding: 4px 0 2px;
+  }
+  .map-missing {
+    margin: 16px 0 4px; padding: 16px; text-align: center; font-size: 15px;
+    background: var(--cream); color: #7a6468;
+  }
+
+  .hintbox {
+    background: #fde8ef; padding: 22px 20px;
+    outline: 2px dashed var(--stitch); outline-offset: -9px;
+  }
+  .hint { display: none; }
+  .hint.show { display: block; }
+  .hint p { margin: 0; font-family: "Caveat", cursive; font-size: 25px; line-height: 1.25; }
+  .hint.show ~ .hint.show { margin-top: 14px; }
+  button.hint.show {
+    width: 100%; padding: 12px 10px;
+    font: 700 24px "Caveat", cursive; color: #fff; cursor: pointer;
+    background: var(--lipstick); border: 0; border-radius: 40px;
+    box-shadow: 0 3px 0 #9e2640; transform: rotate(-1deg);
+  }
+  button.hint.show:active { transform: rotate(-1deg) translateY(2px); box-shadow: 0 1px 0 #9e2640; }
+
+  .call {
+    text-align: center; margin-top: 26px;
+    font-family: "Caveat", cursive; font-size: 24px; color: #7c2940;
+  }
+
+  .kiss { position: absolute; pointer-events: none; z-index: 3; mix-blend-mode: multiply; opacity: .8; }
+  .kiss.tr { top: -34px; right: -22px; }
+  .kiss.bl { bottom: -30px; left: -20px; }
+  .kiss.tl { top: -8px; left: -30px; }
+
+  .draft {
+    background: #fff; color: #9e1b35; border: 2px solid #9e1b35;
+    padding: 10px 12px; font: 14px/1.4 system-ui, sans-serif; margin-bottom: 18px;
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="lipprint" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.5" result="holes"/>
+      <feComposite in="SourceGraphic" in2="holes" operator="in"/>
+    </filter>
+    <symbol id="lips" viewBox="0 0 120 72">
+      <g filter="url(#lipprint)" fill="#d33c5c">
+        <path d="M4 37C18 31 33 12 49 13c5 1 8 5 11 9 3-4 6-8 11-9 16-1 31 18 45 24-20 3-37-1-56 2C41 35 23 40 4 37z"/>
+        <path d="M4 39c19 4 36 0 56 3 20-3 37 1 56-3-14 19-33 29-56 29S18 58 4 39z"/>
+      </g>
+      <g fill="none" stroke="#f5c3d3" stroke-width="1.3" stroke-linecap="round" opacity=".7">
+        <path d="M30 26l3 9M42 19l2 14M56 22l1 12M68 20l-1 13M80 21l-2 13M92 27l-3 9"/>
+        <path d="M24 46l4 9M38 48l2 12M52 47l1 14M66 47l-1 14M80 48l-2 12M94 46l-4 9"/>
+      </g>
+    </symbol>
+    <symbol id="heart" viewBox="0 0 24 24">
+      <path d="M12 21s-7.5-4.6-9.6-9.2C.8 8.3 2.9 4.5 6.6 4.5c2.2 0 3.7 1.3 5.4 3.3 1.7-2 3.2-3.3 5.4-3.3 3.7 0 5.8 3.8 4.2 7.3C19.5 16.4 12 21 12 21z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main id="app"></main>
+
+<script>
+/* ================= ВСЁ, ЧТО НУЖНО ПРАВИТЬ, - ЗДЕСЬ =================
+   zone - координаты СЛЕДУЮЩЕГО тайника: { lat, lon, r } (r - радиус зоны в метрах).
+   Зона рисуется со сдвигом, так что тайник не окажется ровно в её центре.
+   map: true у этапа - карта сразу под загадкой; map: true у подсказки - карта в подсказке.
+   ==================================================================== */
+const NAME = "Арина";
+const PHONE_NOTE = "Если совсем застряла - просто позвони мне ♡";
+const SPOT = "маленький конверт с кодом где-то рядом, на уровне глаз или ниже";
+
+const STAGES = {
+  "a4f610": {                                   // QR №1 - в конверте, дома
+    strip: "начало",
+    title: "Доброе утро, " + NAME,
+    dict: true,
+    note: "Сегодня никуда не спеши. Я спрятал для тебя пять кодов по посёлку, а в самом конце лежит кое-что на бумаге. Надень удобную обувь и не забудь телефон.",
+    riddle: "Его купола видно с половины посёлка. Он носит имя князя, который выиграл битву на льду. Начни отсюда.",
+    spot: SPOT,
+    zone: { lat: 55.81167, lon: 37.04025, r: 70 },   // храм по OpenStreetMap
+    hints: [
+      { text: "Князь - Александр Невский. Вот где искать:", map: true },
+      { text: "Храм Александра Невского." }
+    ]
+  },
+  "863e0c": {                                   // QR №2 - у храма
+    strip: "1 из 5 найдено",
+    title: "Первый есть",
+    note: "Быстро! Теперь пойдём к самому загадочному соседу в посёлке.",
+    riddle: "Снаружи он похож на католический храм, хотя это обычный жилой дом. Мы с тобой давно придумали, кто там живёт на самом деле.",
+    spot: SPOT,
+    zone: { lat: 55.817772, lon: 37.045918, r: 50 }, // дом культистов
+    hints: [
+      { text: "Там собирается одно очень тайное общество. Вот где:", map: true },
+      { text: "Дом культистов." }
+    ]
+  },
+  "651688": {                                   // QR №3 - у дома культистов
+    strip: "2 из 5 найдено",
+    title: "Культисты не заметили",
+    note: "Уходи тихо, пока тебя не позвали на собрание.",
+    riddle: "На этот раз без загадки. Дойди до места, обведённого на карте.",
+    map: true,
+    spot: SPOT,
+    zone: { lat: 55.817764, lon: 37.048342, r: 50 }, // баскетбольный корт
+    hints: [
+      { text: "Там есть кольцо, в которое надо попасть мячом." },
+      { text: "Баскетбольный корт." }
+    ]
+  },
+  "197594": {                                   // QR №4 - у корта
+    strip: "3 из 5 найдено",
+    title: "Трёхочковый!",
+    note: "Следующую записку я зашифровал, чтобы её не прочитали культисты.",
+    riddle: "Каждая буква здесь сдвинута на одно и то же число шагов по алфавиту. Расшифруй - узнаешь, куда идти.",
+    cipher: "ЁСОЦДСМ ЖСП",
+    alphabet: true,
+    spot: SPOT,
+    zone: { lat: 55.820345, lon: 37.057716, r: 60 }, // голубой дом
+    hints: [
+      { text: "Сдвиг на 3 буквы назад: Ё → Г, С → О." },
+      { text: "Там написано «Голубой дом». Вот где:", map: true }
+    ]
+  },
+  "5f95e4": {                                   // QR №5 - у голубого дома
+    strip: "4 из 5 найдено",
+    title: "Почти всё",
+    note: "Интересно, решётки сегодня выдвинуты или спрятаны?",
+    riddle: "Кто-то белый и пушистый каждый раз бежит к забору, чтобы с нами поздороваться. Сходи к нему и сегодня, он точно ждёт.",
+    spot: SPOT,
+    zone: { lat: 55.823048, lon: 37.046406, r: 60 }, // забор с самоедом (уточнить при раскладке)
+    hints: [
+      { text: "Облако на четырёх лапах. Вот где:", map: true },
+      { text: "Белый самоед у забора." }
+    ]
+  },
+  "33af55": {                                   // QR №6 - у забора с собакой
+    strip: "5 из 5 найдено",
+    title: "Последняя",
+    note: "Все пять кодов твои. Спасибо, что прошла этот путь со мной.",
+    riddle: "Самое главное всё это время было рядом с местом, откуда ты вышла утром. Возвращайся, но в дом не заходи.",
+    spot: "конверт со своим именем",
+    spotLabel: "финал",
+    hints: [
+      { text: "Тебе нужно в сад." },
+      { text: "Письмо ждёт в саду, на конверте твоё имя." }
+    ]
+  }
+};
+const ORDER = ["a4f610", "863e0c", "651688", "197594", "5f95e4", "33af55"];   // порядок этапов
+/* ==================================================================== */
+</script>
+
+
+<script>
+const ALPHABET = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+// Детерминированный генератор: одна и та же страница всегда выглядит одинаково
+function rng(seed) {
+  let h = 2166136261;
+  for (const ch of seed) h = Math.imul(h ^ ch.charCodeAt(0), 16777619);
+  return () => { h = Math.imul(h ^ (h >>> 15), 2246822507); h ^= h >>> 13; return ((h >>> 0) % 10000) / 10000; };
+}
+
+const FONTS = [
+  ["Playfair Display", 900, "normal"], ["Oswald", 600, "normal"], ["Rubik Mono One", 400, "normal"],
+  ["Lobster", 400, "normal"], ["Russo One", 400, "normal"], ["Alice", 400, "normal"],
+  ["Playfair Display", 700, "italic"], ["PT Mono", 400, "normal"]
+];
+const SWATCH = [
+  ["#fffdf8", "#221a1c"], ["#221a1c", "#fffdf8"], ["#f4a7c0", "#221a1c"], ["#c9b6e4", "#221a1c"],
+  ["#efe3cf", "#221a1c"], ["#fffdf8", "#d33c5c"], ["#e8e6e1", "#4a3a8c"], ["#d33c5c", "#fffdf8"]
+];
+
+function ransom(text, seed, size) {
+  const r = rng(seed);
+  return text.split(" ").map(word => {
+    const letters = [...word].map(ch => {
+      const f = FONTS[Math.floor(r() * FONTS.length)];
+      const s = SWATCH[Math.floor(r() * SWATCH.length)];
+      const rot = (r() * 12 - 6).toFixed(1);
+      const fs = Math.round(size * (0.85 + r() * 0.35));
+      const up = f[0] === "Lobster" ? ch : (r() > 0.45 ? ch.toUpperCase() : ch.toLowerCase());
+      return `<span class="rl" style="font-family:'${f[0]}',serif;font-weight:${f[1]};font-style:${f[2]};background:${s[0]};color:${s[1]};transform:rotate(${rot}deg);font-size:${fs}px">${esc(up)}</span>`;
+    }).join("");
+    return `<span class="word${[...word].length > 9 ? " long" : ""}">${letters}</span>`;
+  }).join(" ");
+}
+
+function hearts(idx) {
+  return ORDER.map((_, i) =>
+    `<svg viewBox="0 0 24 24"><use href="#heart" fill="${i <= idx ? "#d33c5c" : "#fbe3ec"}"/></svg>`).join("");
+}
+
+function kiss(seed, cls) {
+  const r = rng(seed);
+  const rot = Math.round(r() * 50 - 25), w = 78 + Math.round(r() * 22);
+  return `<svg class="kiss ${cls}" style="width:${w}px;height:${Math.round(w * .6)}px;transform:rotate(${rot}deg)" viewBox="0 0 120 72"><use href="#lips"/></svg>`;
+}
+
+function usesMap(st) { return st.map || (st.hints || []).some(h => h.map); }
+function zoneReady(z) { return z && typeof z.lat === "number" && typeof z.lon === "number"; }
+function isDraft() {
+  return ORDER.some(k => {
+    const st = STAGES[k];
+    const texts = [st.title, st.note, st.riddle, st.spot, ...(st.hints || []).map(h => h.text)];
+    return texts.some(t => String(t).includes("[")) || (usesMap(st) && !zoneReady(st.zone));
+  });
+}
+
+// Центр зоны сдвинут: тайник внутри круга, но не в центре
+function shiftedCenter(key, z) {
+  const r = rng(key + "z");
+  const angle = r() * 2 * Math.PI;
+  const dist = z.r * (0.35 + r() * 0.2);
+  const dLat = (dist * Math.cos(angle)) / 111320;
+  const dLon = (dist * Math.sin(angle)) / (111320 * Math.cos(z.lat * Math.PI / 180));
+  return [z.lat + dLat, z.lon + dLon];
+}
+
+function mapHtml(id, z) {
+  return zoneReady(z)
+    ? `<figure class="polaroid"><div class="map" id="${id}"></div><figcaption>где-то здесь ♡</figcaption></figure>`
+    : `<div class="map-missing">Карта появится, когда будут заданы координаты.</div>`;
+}
+
+// Мини-карта без библиотек: плитки OpenStreetMap + круг поверх
+function drawMap(id, key, z) {
+  const el = document.getElementById(id);
+  if (!el || el.dataset.done) return;
+  el.dataset.done = "1";
+  const [lat, lon] = shiftedCenter(key, z);
+  const W = el.clientWidth, H = el.clientHeight;
+  const cos = Math.cos(lat * Math.PI / 180);
+  const zoom = Math.min(18, Math.round(Math.log2(156543.03 * cos / (z.r / 52))));
+  const scale = 256 * Math.pow(2, zoom);
+  const cx = (lon + 180) / 360 * scale;
+  const s = Math.sin(lat * Math.PI / 180);
+  const cy = (0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI)) * scale;
+  const left = cx - W / 2, top = cy - H / 2;
+  let html = "";
+  for (let tx = Math.floor(left / 256); tx <= Math.floor((left + W) / 256); tx++) {
+    for (let ty = Math.floor(top / 256); ty <= Math.floor((top + H) / 256); ty++) {
+      html += `<img alt="" src="https://tile.openstreetmap.org/${zoom}/${tx}/${ty}.png" style="left:${Math.round(tx * 256 - left)}px;top:${Math.round(ty * 256 - top)}px">`;
+    }
+  }
+  const rpx = z.r / (156543.03 * cos / Math.pow(2, zoom));
+  html += `<svg class="ring" width="${W}" height="${H}"><circle cx="${W / 2}" cy="${H / 2}" r="${rpx}" fill="#f4a7c0" fill-opacity=".35" stroke="#d33c5c" stroke-width="3" stroke-dasharray="7 6"/></svg>`;
+  html += `<span class="osm">© OpenStreetMap</span>`;
+  el.innerHTML = html;
+}
+
+function render() {
+  const app = document.getElementById("app");
+  const key = location.hash.replace("#", "").trim();
+  const st = STAGES[key];
+
+  if (!st) {
+    app.innerHTML = `
+      ${kiss("x", "tl")}
+      <p class="strip">тссс</p>
+      <h1 class="ransom">${ransom("Ещё рано", "x", 34)}</h1>
+      <div class="card note tape tilt-l"><p>Этот квест начинается с конверта. Найди его - и отсканируй код оттуда.</p></div>`;
+    return;
+  }
+
+  const idx = ORDER.indexOf(key);
+  const hints = st.hints || [];
+  const hintsHtml = hints.map((h, i) => `
+    <div class="hint" id="h${i}">
+      <p>${esc(h.text)}</p>
+      ${h.map ? mapHtml("map-h" + i, st.zone) : ""}
+    </div>
+    <button class="hint" id="b${i}">${i === 0 ? "подсказка ♡" : "ещё подсказка ♡"}</button>`).join("");
+
+  app.innerHTML = `
+    ${kiss(key + "a", "tl")}
+    ${isDraft() ? '<div class="draft">Черновик: остались поля в [квадратных скобках] или пустые координаты.</div>' : ""}
+    <div class="hearts">${hearts(idx)}</div>
+    <p class="strip">${esc(st.strip)}</p>
+    <h1 class="ransom">${ransom(st.title, key, 34)}</h1>
+    ${st.dict ? `<div class="dict"><b>квест</b> <i>[квэ́ст] сущ.</i><br>Прогулка по нашему посёлку, в конце которой тебя ждёт письмо.</div>` : ""}
+    <div class="card note tape tilt-l">${kiss(key + "b", "tr")}<p>${esc(st.note)}</p></div>
+    <div class="card torn tilt-r">
+      <div class="label">${ransom("загадка", key + "l", 15)}</div>
+      <p class="riddle">${esc(st.riddle)}</p>
+      ${st.cipher ? `<div class="cipher">${ransom(st.cipher, key + "c", 26)}</div>` : ""}
+      ${st.alphabet ? `<p class="alphabet">${ALPHABET.slice(0, 17)}<br>${ALPHABET.slice(17)}</p>` : ""}
+      ${st.map ? mapHtml("map-main", st.zone) : ""}
+      <p class="spot">${esc(st.spotLabel || "где искать")}: ${esc(st.spot)}</p>
+    </div>
+    ${hints.length ? `<div class="card hintbox tilt-l">${kiss(key + "c", "bl")}${hintsHtml}</div>` : ""}
+    <p class="call">${esc(PHONE_NOTE)}</p>`;
+
+  if (st.map && zoneReady(st.zone)) drawMap("map-main", key, st.zone);
+
+  document.getElementById("b0")?.classList.add("show");
+  hints.forEach((h, i) => {
+    document.getElementById("b" + i).onclick = () => {
+      document.getElementById("b" + i).classList.remove("show");
+      document.getElementById("h" + i).classList.add("show");
+      document.getElementById("b" + (i + 1))?.classList.add("show");
+      if (h.map && zoneReady(st.zone)) drawMap("map-h" + i, key, st.zone);
+    };
+  });
+  window.scrollTo(0, 0);
+}
+
+window.addEventListener("hashchange", render);
+render();
+</script>
+</body>
+</html>
