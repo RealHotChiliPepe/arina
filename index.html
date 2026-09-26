@@ -246,7 +246,9 @@ const STAGES = {
     strip: "3 из 7 найдено",
     title: "Культисты не заметили",
     note: "Уходи тихо. Следующую записку я зашифровал, чтобы её не прочитали культисты.",
-    task: "На их доме есть надпись на латыни. Переведи её на русский и пришли мне перевод.",
+    task: "На их доме есть надпись на латыни. Переведи её на русский и впиши перевод. Дословно не обязательно, главное - смысл.",
+    answers: ["[ключевое слово перевода]"],
+    answerMode: "contains",
     riddle: "Каждая буква здесь сдвинута на одно и то же число шагов по алфавиту. Расшифруй - узнаешь, куда идти. Только внутрь не заходи: тебе нужна улица.",
     cipher: "УЗФХСУГР",
     alphabet: true,
@@ -487,14 +489,15 @@ function render() {
     const input = document.getElementById("ans"), msg = document.getElementById("msg");
     if (solved) { input.value = "✓"; input.disabled = true; msg.textContent = "Верно ♡"; }
     const check = () => {
-      if (ok.includes(norm(input.value))) {
+      const v = norm(input.value);
+      if (st.answerMode === "contains" ? ok.some(a => a && v.includes(a)) : ok.includes(v)) {
         msg.textContent = "Верно ♡";
         try { localStorage.setItem("solved-" + key, "1"); } catch (e) {}
         document.getElementById("skip").classList.add("hidden");
         unlock();
       } else {
         tries++;
-        msg.textContent = tries < 3 ? "Не то. Посчитай ещё раз." : "Не сходится? Позвони мне или иди дальше.";
+        msg.textContent = tries < 3 ? (st.answerMode === "contains" ? "Не то. Попробуй сформулировать иначе." : "Не то. Посчитай ещё раз.") : "Не сходится? Позвони мне или иди дальше.";
         if (tries >= 3) document.getElementById("skip").classList.remove("hidden");
       }
     };
