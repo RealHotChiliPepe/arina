@@ -147,6 +147,7 @@
   .btn.ghost { background: transparent; color: var(--lipstick); box-shadow: none; border: 2px solid var(--lipstick); }
   .task-msg { margin: 10px 0 0; font-family: "Caveat", cursive; font-size: 23px; min-height: 1em; }
   .locked-note { text-align: center; font-family: "Caveat", cursive; font-size: 23px; color: #7c2940; margin: 0 0 22px; }
+  .spotbtn { margin-top: 18px; font-size: 21px; line-height: 1.15; }
   .hidden { display: none; }
 
   .call {
@@ -235,11 +236,11 @@ const STAGES = {
     note: "Если кто-то выйдет, веди себя естественно.",
     task: "Придумай, как зовут этого лохматого великана, и напиши мне.",
     riddle: "Есть в посёлке дом, который выглядит так, будто по воскресеньям в нём служат, а не живут. Мы с тобой давно знаем, кто там собирается на самом деле.",
-    spot: "справа от их дома, перед участком, но уже не на их земле, тянется открытая труба для дождевой воды. Код спрятан прямо в ней, у слива в канализацию: запусти руку под жёлтые листья и не бойся. Если дошла до моста, ты прошла мимо.",
+    spot: "справа от их дома, перед участком, но уже не на их земле, тянется открытая труба для дождевой воды. Код лежит прямо в ней, у слива в канализацию, на жёлтых листьях: запусти руку и не бойся. Если дошла до моста, ты прошла мимо.",
     zone: { lat: 55.817772, lon: 37.045918, r: 50 }, // дом культистов
     hints: [
       { text: "Там заседает одно очень тайное общество. Вот где:", map: true },
-      { text: "Дом культистов. Справа, перед участком, открытая дождевая труба. Код внутри неё у слива, под листьями." }
+      { text: "Дом культистов. Справа, перед участком, открытая дождевая труба. Код внутри неё у слива, на листьях." }
     ]
   },
   "651688": {                                   // QR №4 - у дома культистов
@@ -263,7 +264,7 @@ const STAGES = {
     strip: "4 из 7 найдено",
     title: "Вид на воду",
     note: "Самое красивое место в посёлке. Постой тут минутку, никуда не торопись.",
-    task: "Шпионское задание №1: вернись к ресторану и найди вывеску с его названием. Какой номер у ближайшего к ней участка? Впиши его.",
+    task: "Шпионское задание №1: вернись к ресторану и найди вывеску с его названием. Какому участку принадлежит ближайшее к ней парковочное место? Впиши номер участка.",
     answers: ["309"],
     answerMode: "contains",
     riddle: "Здесь висит корзина без дна, и никто не расстраивается, что в ней ничего не остаётся. Наоборот, радуются.",
@@ -474,7 +475,8 @@ function render() {
       ${st.cipher ? `<div class="cipher">${ransom(st.cipher, key + "c", 26)}</div>` : ""}
       ${st.alphabet ? `<p class="alphabet">${ALPHABET.slice(0, 17)}<br>${ALPHABET.slice(17)}</p>` : ""}
       ${st.map ? mapHtml("map-main", st.zone) : ""}
-      <p class="spot">${esc(st.spotLabel || "где искать")}: ${esc(st.spot)}</p>
+      <button class="btn ghost spotbtn" id="spotbtn">нажми, когда разгадаешь загадку и найдёшь место. Не раньше!</button>
+      <p class="spot hidden" id="spot">${esc(st.spotLabel || "где искать")}: ${esc(st.spot)}</p>
     </div>
     ${hints.length ? `<div class="card hintbox tilt-r">${kiss(key + "c", "bl")}${hintsHtml}</div>` : ""}
     </div>
@@ -509,6 +511,11 @@ function render() {
     input.addEventListener("keydown", e => { if (e.key === "Enter") check(); });
     document.getElementById("skip").onclick = () => { document.getElementById("skip").classList.add("hidden"); unlock(); };
   }
+
+  document.getElementById("spotbtn").onclick = () => {
+    document.getElementById("spotbtn").remove();
+    document.getElementById("spot").classList.remove("hidden");
+  };
 
   document.getElementById("b0")?.classList.add("show");
   hints.forEach((h, i) => {
