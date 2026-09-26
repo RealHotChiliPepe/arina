@@ -133,6 +133,22 @@
   }
   button.hint.show:active { transform: rotate(-1deg) translateY(2px); box-shadow: 0 1px 0 #9e2640; }
 
+  .task-input {
+    width: 100%; margin-top: 14px; padding: 10px 12px;
+    font: 500 26px "Caveat", cursive; color: var(--ink); background: #fff;
+    border: 2px dashed var(--stitch); border-radius: 10px; outline: none;
+  }
+  .btn {
+    display: block; width: 100%; margin-top: 12px; padding: 12px 10px;
+    font: 700 24px "Caveat", cursive; color: #fff; cursor: pointer;
+    background: var(--lipstick); border: 0; border-radius: 40px;
+    box-shadow: 0 3px 0 #9e2640; transform: rotate(-1deg);
+  }
+  .btn.ghost { background: transparent; color: var(--lipstick); box-shadow: none; border: 2px solid var(--lipstick); }
+  .task-msg { margin: 10px 0 0; font-family: "Caveat", cursive; font-size: 23px; min-height: 1em; }
+  .locked-note { text-align: center; font-family: "Caveat", cursive; font-size: 23px; color: #7c2940; margin: 0 0 22px; }
+  .hidden { display: none; }
+
   .call {
     text-align: center; margin-top: 26px;
     font-family: "Caveat", cursive; font-size: 24px; color: #7c2940;
@@ -190,7 +206,7 @@ const STAGES = {
     strip: "начало",
     title: "Доброе утро, " + NAME,
     dict: true,
-    note: "Сегодня никуда не спеши. Я спрятал для тебя пять кодов по посёлку, а в самом конце лежит кое-что на бумаге. Надень удобную обувь и не забудь телефон.",
+    note: "Сегодня никуда не спеши. Я спрятал для тебя семь кодов по посёлку, на каждой точке тебя ждёт маленькое задание, а в самом конце лежит кое-что на бумаге. Надень удобную обувь и не забудь телефон.",
     riddle: "Его купола видно с половины посёлка. Он носит имя князя, который выиграл битву на льду. Начни отсюда.",
     spot: SPOT,
     zone: { lat: 55.81167, lon: 37.04025, r: 70 },   // храм по OpenStreetMap
@@ -200,9 +216,24 @@ const STAGES = {
     ]
   },
   "863e0c": {                                   // QR №2 - у храма
-    strip: "1 из 5 найдено",
+    strip: "1 из 7 найдено",
     title: "Первый есть",
-    note: "Быстро! Теперь пойдём к самому загадочному соседу в посёлке.",
+    note: "Быстро! Но прежде чем идти дальше, одно маленькое задание.",
+    task: "Посчитай купола на храме и впиши число.",
+    answers: ["[купола]"],
+    riddle: "Здесь живёт человек, которого вся страна знает в лицо, а мы - только по забору.",
+    spot: SPOT,
+    zone: { lat: null, lon: null, r: 60 },          // [дом знаменитости: координаты]
+    hints: [
+      { text: "Самый известный сосед посёлка. Вот где:", map: true },
+      { text: "Дом нашей местной знаменитости." }
+    ]
+  },
+  "75995a": {                                   // QR №3 - у дома знаменитости
+    strip: "2 из 7 найдено",
+    title: "Автографов не будет",
+    note: "Если кто-то выйдет, веди себя естественно.",
+    task: "Напиши мне, что бы ты сказала хозяину, если бы он сейчас вышел.",
     riddle: "Есть в посёлке дом, который выглядит так, будто по воскресеньям в нём служат, а не живут. Мы с тобой давно знаем, кто там собирается на самом деле.",
     spot: SPOT,
     zone: { lat: 55.817772, lon: 37.045918, r: 50 }, // дом культистов
@@ -211,24 +242,40 @@ const STAGES = {
       { text: "Дом культистов." }
     ]
   },
-  "651688": {                                   // QR №3 - у дома культистов
-    strip: "2 из 5 найдено",
+  "651688": {                                   // QR №4 - у дома культистов
+    strip: "3 из 7 найдено",
     title: "Культисты не заметили",
     note: "Уходи тихо. Следующую записку я зашифровал, чтобы её не прочитали культисты.",
-    riddle: "Каждая буква здесь сдвинута на одно и то же число шагов по алфавиту. Расшифруй - узнаешь, куда идти.",
-    cipher: "ДГФНЗХДСО",
+    task: "Сделай самое загадочное лицо на фоне их дома и пришли мне.",
+    riddle: "Каждая буква здесь сдвинута на одно и то же число шагов по алфавиту. Расшифруй - узнаешь, куда идти. Только внутрь не заходи: тебе нужна улица.",
+    cipher: "УЗФХСУГР",
     alphabet: true,
+    spot: SPOT,
+    zone: { lat: 55.81661, lon: 37.04782, r: 60 },   // ресторан «Озеро» по OpenStreetMap
+    hints: [
+      { text: "Сдвиг на 3 буквы назад: У → Р, З → Е." },
+      { text: "Там написано «Ресторан». Тот, что на берегу озера. Вот где:", map: true }
+    ]
+  },
+  "43c6fb": {                                   // QR №5 - у ресторана «Озеро»
+    strip: "4 из 7 найдено",
+    title: "Вид на воду",
+    note: "Самое красивое место в посёлке. Постой тут минутку, никуда не торопись.",
+    task: "Сфотографируй уток или любую другую живность на воде и пришли мне. Никого нет - тогда селфи с озером.",
+    riddle: "Найди место, где кольцо висит выше твоей головы, а попасть в него можно только мячом.",
     spot: SPOT,
     zone: { lat: 55.817764, lon: 37.048342, r: 50 }, // баскетбольный корт
     hints: [
-      { text: "Сдвиг на 3 буквы назад: Д → А, Г → Б." },
-      { text: "Там написано «Баскетбол». Вот где:", map: true }
+      { text: "Там играют в баскетбол. Вот где:", map: true },
+      { text: "Баскетбольный корт." }
     ]
   },
-  "197594": {                                   // QR №4 - у корта
-    strip: "3 из 5 найдено",
+  "197594": {                                   // QR №6 - у корта
+    strip: "5 из 7 найдено",
     title: "Трёхочковый!",
-    note: "Бросок засчитан. Дальше без шифров и без слов.",
+    note: "Бросок засчитан. Осталось посчитать кое-что на площадке.",
+    task: "Сколько баскетбольных колец на площадке? Впиши число.",
+    answers: ["[кольца]"],
     riddle: "На этот раз без загадки. Дойди до места, обведённого на карте.",
     map: true,
     spot: SPOT,
@@ -238,10 +285,12 @@ const STAGES = {
       { text: "Голубой дом." }
     ]
   },
-  "5f95e4": {                                   // QR №5 - у голубого дома
-    strip: "4 из 5 найдено",
+  "5f95e4": {                                   // QR №7 - у голубого дома
+    strip: "6 из 7 найдено",
     title: "Почти всё",
     note: "Интересно, решётки сегодня выдвинуты или спрятаны?",
+    task: "Посчитай окна с решётками, которые видно с улицы, и впиши число.",
+    answers: ["[окна]"],
     riddle: "У одного пушистого блондина в посёлке тайный роман. Хозяева уверены, что он верен только им, но стоит тебе подойти к забору, и он забывает обо всём на свете. Навести его, пока никто не видит.",
     spot: SPOT,
     zone: { lat: 55.823048, lon: 37.046406, r: 60 }, // забор с самоедом (уточнить при раскладке)
@@ -250,10 +299,11 @@ const STAGES = {
       { text: "Самоед у забора. Сначала погладь его, потом ищи код." }
     ]
   },
-  "33af55": {                                   // QR №6 - у забора с собакой
-    strip: "5 из 5 найдено",
+  "33af55": {                                   // QR №8 - у забора с самоедом
+    strip: "7 из 7 найдено",
     title: "Последняя",
-    note: "Все пять кодов твои. Спасибо, что прошла этот путь со мной.",
+    note: "Все семь кодов твои. Спасибо, что прошла этот путь со мной.",
+    task: "Если он во дворе, сделай с ним селфи и пришли мне.",
     riddle: "Самоед доволен, можно идти дальше. Возвращайся домой, но в дверь не заходи: последняя записка спряталась там, где летом всё зеленеет.",
     spot: "конверт со своим именем",
     spotLabel: "финал",
@@ -263,7 +313,7 @@ const STAGES = {
     ]
   }
 };
-const ORDER = ["a4f610", "863e0c", "651688", "197594", "5f95e4", "33af55"];   // порядок этапов
+const ORDER = ["a4f610", "863e0c", "75995a", "651688", "43c6fb", "197594", "5f95e4", "33af55"];   // порядок этапов
 /* ==================================================================== */
 </script>
 
@@ -315,12 +365,14 @@ function kiss(seed, cls) {
   return `<svg class="kiss ${cls}" style="width:${w}px;height:${Math.round(w * .6)}px;transform:rotate(${rot}deg)" viewBox="0 0 120 72"><use href="#lips"/></svg>`;
 }
 
+const norm = s => String(s).toLowerCase().replace(/ё/g, "е").replace(/[^a-zа-я0-9]/g, "");
+
 function usesMap(st) { return st.map || (st.hints || []).some(h => h.map); }
 function zoneReady(z) { return z && typeof z.lat === "number" && typeof z.lon === "number"; }
 function isDraft() {
   return ORDER.some(k => {
     const st = STAGES[k];
-    const texts = [st.title, st.note, st.riddle, st.spot, ...(st.hints || []).map(h => h.text)];
+    const texts = [st.title, st.note, st.riddle, st.spot, st.task || "", ...(st.answers || []), ...(st.hints || []).map(h => h.text)];
     return texts.some(t => String(t).includes("[")) || (usesMap(st) && !zoneReady(st.zone));
   });
 }
@@ -383,6 +435,9 @@ function render() {
 
   const idx = ORDER.indexOf(key);
   const hints = st.hints || [];
+  const gated = Array.isArray(st.answers) && st.answers.length > 0;
+  let solved = false;
+  try { solved = localStorage.getItem("solved-" + key) === "1"; } catch (e) {}
   const hintsHtml = hints.map((h, i) => `
     <div class="hint" id="h${i}">
       <p>${esc(h.text)}</p>
@@ -398,7 +453,17 @@ function render() {
     <h1 class="ransom">${ransom(st.title, key, 34)}</h1>
     ${st.dict ? `<div class="dict"><b>квест</b> <i>[квэ́ст] сущ.</i><br>Прогулка по нашему посёлку, в конце которой тебя ждёт письмо.</div>` : ""}
     <div class="card note tape tilt-l">${kiss(key + "b", "tr")}<p>${esc(st.note)}</p></div>
-    <div class="card torn tilt-r">
+    ${st.task ? `<div class="card tilt-r">
+      <div class="label">${ransom("задание", key + "t", 15)}</div>
+      <p class="riddle">${esc(st.task)}</p>
+      ${gated ? `<input class="task-input" id="ans" inputmode="text" autocomplete="off" placeholder="ответ">
+      <button class="btn" id="check">проверить ♡</button>
+      <p class="task-msg" id="msg"></p>
+      <button class="btn ghost hidden" id="skip">идти дальше без ответа</button>` : ""}
+    </div>` : ""}
+    ${gated && !solved ? `<p class="locked-note" id="lockednote">следующая загадка откроется после задания</p>` : ""}
+    <div id="rest" class="${gated && !solved ? "hidden" : ""}">
+    <div class="card torn tilt-l">
       <div class="label">${ransom("загадка", key + "l", 15)}</div>
       <p class="riddle">${esc(st.riddle)}</p>
       ${st.cipher ? `<div class="cipher">${ransom(st.cipher, key + "c", 26)}</div>` : ""}
@@ -406,10 +471,38 @@ function render() {
       ${st.map ? mapHtml("map-main", st.zone) : ""}
       <p class="spot">${esc(st.spotLabel || "где искать")}: ${esc(st.spot)}</p>
     </div>
-    ${hints.length ? `<div class="card hintbox tilt-l">${kiss(key + "c", "bl")}${hintsHtml}</div>` : ""}
+    ${hints.length ? `<div class="card hintbox tilt-r">${kiss(key + "c", "bl")}${hintsHtml}</div>` : ""}
+    </div>
     <p class="call">${esc(PHONE_NOTE)}</p>`;
 
-  if (st.map && zoneReady(st.zone)) drawMap("map-main", key, st.zone);
+  const unlock = () => {
+    document.getElementById("rest").classList.remove("hidden");
+    document.getElementById("lockednote")?.remove();
+    if (st.map && zoneReady(st.zone)) drawMap("map-main", key, st.zone);
+  };
+  if (!gated || solved) unlock();
+
+  if (gated) {
+    let tries = 0;
+    const ok = st.answers.map(norm);
+    const input = document.getElementById("ans"), msg = document.getElementById("msg");
+    if (solved) { input.value = "✓"; input.disabled = true; msg.textContent = "Верно ♡"; }
+    const check = () => {
+      if (ok.includes(norm(input.value))) {
+        msg.textContent = "Верно ♡";
+        try { localStorage.setItem("solved-" + key, "1"); } catch (e) {}
+        document.getElementById("skip").classList.add("hidden");
+        unlock();
+      } else {
+        tries++;
+        msg.textContent = tries < 3 ? "Не то. Посчитай ещё раз." : "Не сходится? Позвони мне или иди дальше.";
+        if (tries >= 3) document.getElementById("skip").classList.remove("hidden");
+      }
+    };
+    document.getElementById("check").onclick = check;
+    input.addEventListener("keydown", e => { if (e.key === "Enter") check(); });
+    document.getElementById("skip").onclick = () => { document.getElementById("skip").classList.add("hidden"); unlock(); };
+  }
 
   document.getElementById("b0")?.classList.add("show");
   hints.forEach((h, i) => {
