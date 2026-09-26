@@ -293,7 +293,7 @@ const STAGES = {
   "5f95e4": {                                   // QR №7 - у голубого дома
     strip: "6 из 7 найдено",
     title: "Почти всё",
-    note: "Интересно, решётки сегодня выдвинуты или спрятаны?",
+    note: "Интересно, решётки сегодня подняты или опущены?",
     task: "Шпионское задание №2: у этого дома две машины. Незаметно перепиши номер любой из них и впиши сюда, буквы и цифры. Регион можно не писать.",
     answers: ["т512хт", "t512xt", "у071тн", "y071th"],
     answerMode: "contains",
@@ -443,7 +443,7 @@ function render() {
   const hints = st.hints || [];
   const gated = Array.isArray(st.answers) && st.answers.length > 0;
   let solved = false;
-  try { solved = localStorage.getItem("solved-" + key) === "1"; } catch (e) {}
+  try { solved = localStorage.getItem("solved-v2-" + key) === "1"; } catch (e) {}
   const hintsHtml = hints.map((h, i) => `
     <div class="hint" id="h${i}">
       <p>${esc(h.text)}</p>
@@ -498,7 +498,7 @@ function render() {
       const v = norm(input.value);
       if (st.answerMode === "contains" ? ok.some(a => a && v.includes(a)) : ok.includes(v)) {
         msg.textContent = "Верно ♡";
-        try { localStorage.setItem("solved-" + key, "1"); } catch (e) {}
+        try { localStorage.setItem("solved-v2-" + key, "1"); } catch (e) {}
         document.getElementById("skip").classList.add("hidden");
         unlock();
       } else {
